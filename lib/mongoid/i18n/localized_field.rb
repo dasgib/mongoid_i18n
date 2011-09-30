@@ -15,8 +15,13 @@ module Mongoid
           lookups.push ::I18n.default_locale.to_s
         end
 
-        # Find first localized value in lookup path and return corresponding value
-        object[lookups.find{|locale| object[locale]}]
+        # TODO: this is weird...
+        if object.class.to_s == "String" && options[:downwards_compatible]
+          object
+        else
+          # Find first localized value in lookup path and return corresponding value
+          object[lookups.find{|locale| object[locale]}]
+        end
       end
 
       # Return translations as keys. If :clear_empty_values is set to true
