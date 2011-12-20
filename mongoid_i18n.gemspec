@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version = "0.5.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Rodrigo Álvarez}]
+  s.authors = [%q{Rodrigo Alvarez}]
   s.date = %q{2011-10-17}
   s.description = %q{This gem aims to be a transparent way to deal with localizable fields.
       Basically use localized_field() instead of field() and that's it.
