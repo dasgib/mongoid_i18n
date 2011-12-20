@@ -15,8 +15,8 @@ begin
       }
     gem.email = "papipo@gmail.com"
     gem.homepage = "http://github.com/Papipo/mongoid_i18n"
-    gem.authors = ["Rodrigo Álvarez"]
-    
+    gem.authors = ["Rodrigo Alvarez"]
+
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
