@@ -15,13 +15,19 @@ module Mongoid
           lookups.push ::I18n.default_locale.to_s
         end
 
-        # TODO: this is weird...
-        if object.class.to_s == "String" && options[:downwards_compatible]
+        # if field is a string just return it
+        if is_legacy_field(object)
           object
         else
           # Find first localized value in lookup path and return corresponding value
           object[lookups.find{|locale| object[locale]}]
         end
+      end
+
+      # check if we have a legacy field (=> a string)
+      def is_legacy_field(object)
+        # TODO: this is weird...
+        object.class.to_s == "String" && options[:downwards_compatible]
       end
 
       # Return translations as keys. If :clear_empty_values is set to true
@@ -36,7 +42,7 @@ module Mongoid
 
       # Assing new translation to translation table.
       def assign(object, value)
-        (object || {}).merge(locale => value)
+        ((is_legacy_field(object) ? {::I18n.default_locale.to_s => object} : object) || {}).merge(locale => value)
       end
 
       # Replace translation hash with new one. If :clear_empty_values is set to
