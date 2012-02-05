@@ -20,7 +20,7 @@ module Mongoid
           object
         else
           # Find first localized value in lookup path and return corresponding value
-          object[lookups.find{|locale| object[locale]}]
+          object[lookups.find{|locale| object[locale] if object[locale].present? }]
         end
       end
 
